@@ -90,7 +90,12 @@ const main = async () => {
   const response = await fetch(README_URL);
   const text = await response.text();
 
-  content.innerHTML = converter.makeHtml(text);
+  content.innerHTML = converter
+    .makeHtml(text)
+    .replace(
+      "http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg",
+      "https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg"
+    );
 
   const links = content.querySelectorAll("a");
   for (const link of links) {
